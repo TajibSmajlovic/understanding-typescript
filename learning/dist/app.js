@@ -1,3 +1,4 @@
+"use strict";
 function add(num1, num2, showResult, resultType) {
     if (showResult === void 0) { showResult = true; }
     if (resultType === void 0) { resultType = "as-number"; }
@@ -6,6 +7,8 @@ function add(num1, num2, showResult, resultType) {
         result = num1 + num2;
     else
         result = num1.toString() + num2.toString();
+    if (resultType === "as-number")
+        return +result;
     return showResult ? result : "No Result!";
 }
 var number1;
@@ -23,7 +26,7 @@ var person = {
     name: "Hamid",
     age: 61,
     hobbies: ["Lezanje", "Besposlicarenje"],
-    role: [1, Role.ADMIN]
+    role: [1, Role.ADMIN],
 };
 console.log(person.name);
 for (var _i = 0, _a = person.hobbies; _i < _a.length; _i++) {
@@ -43,4 +46,6 @@ withCallback(10, 25, function (res) { return console.log(res); });
 function generateError(error, errorCode) {
     throw { error: error, errorCode: errorCode };
 }
+console.log("test" + 123);
 generateError("Error!", 500);
+//# sourceMappingURL=app.js.map

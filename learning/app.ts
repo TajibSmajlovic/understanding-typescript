@@ -13,6 +13,8 @@ function add(
     result = num1 + num2;
   else result = num1.toString() + num2.toString();
 
+  if (resultType === "as-number") return +result;
+
   return showResult ? result : "No Result!";
 }
 
@@ -70,4 +72,5 @@ function generateError(error: string, errorCode: number): never {
   throw { error, errorCode };
 }
 
+console.log("test" + 123);
 generateError("Error!", 500);
