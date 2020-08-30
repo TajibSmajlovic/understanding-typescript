@@ -1,34 +1,91 @@
-// type AddFn = (a: number, b:  number) => number
-interface IAddFn {
-  (a: number, b: number): number;
-}
-
-let addFn: IAddFn = (n1: number, n2: number) => n1 + n2;
-
-type Greet = {
-  readonly name: string;
-  greet(text: string): void;
+type UserOne = {
+  name: string;
+  privileges: string[];
 };
 
-interface IName {
-  readonly name?: string;
-  age?: string; // optional
+type UserTwo = {
+  name: string;
+  startDate: Date;
+};
+
+type CombinedUser = UserOne | UserTwo;
+
+// const e1: CombinedUser = {
+//   name: "User",
+//   privileges: [],
+//   startDate: new Date(),
+// };
+
+function printInfo(emp: CombinedUser): void {
+  if ("privileges" in emp) console.log(emp.privileges);
+  if ("startDate" in emp) console.log(emp.startDate);
 }
 
-interface IGreet extends IName {
-  greed?(word: string): void;
-}
-
-class Person implements IGreet {
-  name?: string;
-
-  constructor(name?: string) {
-    if (name) this.name = name;
+class Car {
+  drive(): void {
+    console.log("Driving...");
   }
+}
 
-  greed(word: string): void {
-    console.log(word + this.name);
+class Truck {
+  loadCargo(): void {
+    console.log("Loading");
   }
 }
 
-console.log(new Person());
+type Vehicle = Car | Truck;
+
+function useVehicle(vehicle: Vehicle) {
+  if (vehicle instanceof Truck) vehicle.loadCargo();
+  if (vehicle instanceof Car) vehicle.drive();
+}
+
+// Discriminated Unions
+enum Animals {
+  BIRD = "BIRD",
+  HORSE = "HORSE",
+}
+
+interface IBird {
+  type: Animals.BIRD;
+  flyingSpeed: number;
+}
+
+interface IHorse {
+  type: Animals.HORSE;
+  runningSpeed: number;
+}
+
+type Animal = IBird | IHorse;
+
+function moveAnimal(animal: Animal) {
+  switch (animal.type) {
+    case Animals.BIRD:
+      console.log(animal.flyingSpeed);
+      break;
+    case Animals.HORSE:
+      console.log(animal.runningSpeed);
+      break;
+
+    default:
+      break;
+  }
+}
+
+moveAnimal({ type: Animals.BIRD, flyingSpeed: 15 });
+
+// const p = <HTMLParagraphElement>document.getElementById("message")!
+const p = document.getElementById("message") as HTMLParagraphElement;
+
+//
+interface IErrorContainer {
+  [key: string]: string;
+}
+
+const error: IErrorContainer = {
+  email: "E-mail error!",
+  username: "Username Error",
+};
+
+const userInput = "";
+const storedData = userInput ?? "DEFAULT"; // userInput is returned

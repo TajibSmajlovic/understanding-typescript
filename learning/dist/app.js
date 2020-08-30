@@ -1,14 +1,30 @@
 "use strict";
-var addFn = function (n1, n2) { return n1 + n2; };
-var Person = (function () {
-    function Person(name) {
-        if (name)
-            this.name = name;
+function printInfo(emp) {
+    if ("privileges" in emp)
+        console.log(emp.privileges);
+    if ("startDate" in emp)
+        console.log(emp.startDate);
+}
+var Car = (function () {
+    function Car() {
     }
-    Person.prototype.greed = function (word) {
-        console.log(word + this.name);
+    Car.prototype.drive = function () {
+        console.log("Driving...");
     };
-    return Person;
+    return Car;
 }());
-console.log(new Person());
+var Truck = (function () {
+    function Truck() {
+    }
+    Truck.prototype.loadCargo = function () {
+        console.log("Loading");
+    };
+    return Truck;
+}());
+function useVehicle(vehicle) {
+    if (vehicle instanceof Truck)
+        vehicle.loadCargo();
+    if (vehicle instanceof Car)
+        vehicle.drive();
+}
 //# sourceMappingURL=app.js.map
