@@ -1,30 +1,41 @@
 "use strict";
-function printInfo(emp) {
-    if ("privileges" in emp)
-        console.log(emp.privileges);
-    if ("startDate" in emp)
-        console.log(emp.startDate);
+const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("It works!");
+    }, 1000);
+    reject();
+});
+function merge(objA, objB) {
+    return Object.assign(objA, objB);
 }
-var Car = (function () {
-    function Car() {
-    }
-    Car.prototype.drive = function () {
-        console.log("Driving...");
-    };
-    return Car;
-}());
-var Truck = (function () {
-    function Truck() {
-    }
-    Truck.prototype.loadCargo = function () {
-        console.log("Loading");
-    };
-    return Truck;
-}());
-function useVehicle(vehicle) {
-    if (vehicle instanceof Truck)
-        vehicle.loadCargo();
-    if (vehicle instanceof Car)
-        vehicle.drive();
+function countAndDescribe(element) {
+    return [element, element.length ? element.length : "Got no value"];
 }
+function extractAndConvert(obj, key) {
+    return "value" + obj[key];
+}
+class DataStorage {
+    constructor(data = []) {
+        this.data = data;
+    }
+    addItem(item) {
+        this.data.push(item);
+    }
+    removeItem(item) {
+        if (this.data.indexOf(item) === -1)
+            return;
+        this.data.splice(this.data.indexOf(item), 1);
+    }
+    getItems() {
+        return [...this.data];
+    }
+}
+function createCourseGoal(title, description, completeUntil) {
+    let courseGoal = {};
+    courseGoal.title = title;
+    courseGoal.description = description;
+    courseGoal.completeUntil = completeUntil;
+    return courseGoal;
+}
+const numbers = [1, "Leo"];
 //# sourceMappingURL=app.js.map

@@ -1,91 +1,72 @@
-type UserOne = {
-  name: string;
-  privileges: string[];
-};
+// const names: Array<string> = [];
 
-type UserTwo = {
-  name: string;
-  startDate: Date;
-};
+const promise: Promise<string> = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("It works!");
+  }, 1000);
 
-type CombinedUser = UserOne | UserTwo;
+  reject();
+});
 
-// const e1: CombinedUser = {
-//   name: "User",
-//   privileges: [],
-//   startDate: new Date(),
-// };
-
-function printInfo(emp: CombinedUser): void {
-  if ("privileges" in emp) console.log(emp.privileges);
-  if ("startDate" in emp) console.log(emp.startDate);
+function merge<T1 extends object, T2 extends object>(objA: T1, objB: T2) {
+  return Object.assign(objA, objB);
 }
 
-class Car {
-  drive(): void {
-    console.log("Driving...");
-  }
+interface ILengthy {
+  length: number;
 }
 
-class Truck {
-  loadCargo(): void {
-    console.log("Loading");
-  }
+function countAndDescribe<T extends ILengthy>(
+  element: T
+): [T, number | string] {
+  return [element, element.length ? element.length : "Got no value"];
 }
 
-type Vehicle = Car | Truck;
-
-function useVehicle(vehicle: Vehicle) {
-  if (vehicle instanceof Truck) vehicle.loadCargo();
-  if (vehicle instanceof Car) vehicle.drive();
+function extractAndConvert<T1 extends object, T2 extends keyof T1>(
+  obj: T1,
+  key: T2
+) {
+  return "value" + obj[key];
 }
-
-// Discriminated Unions
-enum Animals {
-  BIRD = "BIRD",
-  HORSE = "HORSE",
-}
-
-interface IBird {
-  type: Animals.BIRD;
-  flyingSpeed: number;
-}
-
-interface IHorse {
-  type: Animals.HORSE;
-  runningSpeed: number;
-}
-
-type Animal = IBird | IHorse;
-
-function moveAnimal(animal: Animal) {
-  switch (animal.type) {
-    case Animals.BIRD:
-      console.log(animal.flyingSpeed);
-      break;
-    case Animals.HORSE:
-      console.log(animal.runningSpeed);
-      break;
-
-    default:
-      break;
-  }
-}
-
-moveAnimal({ type: Animals.BIRD, flyingSpeed: 15 });
-
-// const p = <HTMLParagraphElement>document.getElementById("message")!
-const p = document.getElementById("message") as HTMLParagraphElement;
 
 //
-interface IErrorContainer {
-  [key: string]: string;
+class DataStorage<T extends string | number> {
+  constructor(private data: T[] = []) {}
+
+  addItem(item: T) {
+    this.data.push(item);
+  }
+
+  removeItem(item: T) {
+    if (this.data.indexOf(item) === -1) return;
+
+    this.data.splice(this.data.indexOf(item), 1);
+  }
+
+  getItems() {
+    return [...this.data];
+  }
 }
 
-const error: IErrorContainer = {
-  email: "E-mail error!",
-  username: "Username Error",
-};
+//
+interface CourseGoal {
+  title: string;
+  description: string;
+  completeUntil: Date;
+}
 
-const userInput = "";
-const storedData = userInput ?? "DEFAULT"; // userInput is returned
+function createCourseGoal(
+  title: string,
+  description: string,
+  completeUntil: Date
+): CourseGoal {
+  let courseGoal: Partial<CourseGoal> = {};
+
+  courseGoal.title = title;
+  courseGoal.description = description;
+  courseGoal.completeUntil = completeUntil;
+
+  return courseGoal as CourseGoal;
+}
+
+const numbers: Readonly<[number, string]> = [1, "Leo"];
