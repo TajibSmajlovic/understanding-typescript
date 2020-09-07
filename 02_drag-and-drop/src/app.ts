@@ -14,3 +14,22 @@ export default class App {
 }
 
 new App();
+
+// Using 3rd party libraries
+//
+import "reflect-metadata";
+import _ from "lodash";
+import { validate } from "class-validator";
+
+import Model from "./TestModel.model";
+
+declare var GLOBAL: string;
+
+const book = new Model("A book", 15.99);
+
+validate(book).then((errors) => {
+  if (errors.length) book.getInformation();
+});
+
+console.log(_.shuffle([1, 2, 3]));
+console.log(GLOBAL);
