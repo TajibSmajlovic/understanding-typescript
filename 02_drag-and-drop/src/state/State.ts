@@ -1,6 +1,6 @@
-import Project from "../components/Project.js";
-import TListener from "../types/TListener.js";
-import ProjectStatusesENUM from "../enums/ProjectStatuses.js";
+import Project from "../components/Project";
+import TListener from "../types/TListener";
+import ProjectStatusesENUM from "../enums/ProjectStatuses";
 
 class State<T> {
   protected listeners: TListener<T>[] = [];

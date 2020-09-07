@@ -1,4 +1,4 @@
-import ProjectStatusesENUM from "../enums/ProjectStatuses.js";
+import ProjectStatusesENUM from "../enums/ProjectStatuses";
 
 export default class Project {
   readonly id: string;

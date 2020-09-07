@@ -1,4 +1,4 @@
-import IInput from "../interfaces/IInput.js";
+import IInput from "../interfaces/IInput";
 
 export function validate(input: IInput) {
   switch (typeof input.value) {

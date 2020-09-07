@@ -1,7 +1,7 @@
-import ProjectState from "./state/State.js";
-import ProjectInputs from "./components/ProjectInputs.js";
-import ProjectList from "./components/ProjectList.js";
-import ProjectStatusesENUM from "./enums/ProjectStatuses.js";
+import ProjectState from "./state/State";
+import ProjectInputs from "./components/ProjectInputs";
+import ProjectList from "./components/ProjectList";
+import ProjectStatusesENUM from "./enums/ProjectStatuses";
 
 export default class App {
   static projectState: ProjectState = ProjectState.getInstance();

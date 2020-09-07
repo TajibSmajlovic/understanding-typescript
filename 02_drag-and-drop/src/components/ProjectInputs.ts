@@ -1,8 +1,8 @@
-import App from "../app.js";
-import Component from "./BaseComponent.js";
-import IInput from "../interfaces/IInput.js";
-import AutoBind from "../decorators/AutoBind.js";
-import { validate } from "../utils/helpers.js";
+import App from "../app";
+import Component from "./BaseComponent";
+import IInput from "../interfaces/IInput";
+import AutoBind from "../decorators/AutoBind";
+import { validate } from "../utils/helpers";
 
 export default class ProjectInputs extends Component<
   HTMLDivElement,

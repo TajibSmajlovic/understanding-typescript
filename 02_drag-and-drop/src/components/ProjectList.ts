@@ -1,11 +1,11 @@
-import App from "../app.js";
-import Component from "./BaseComponent.js";
-import Project from "./Project.js";
-import ProjectItem from "./ProjectItem.js";
-import AutoBind from "../decorators/AutoBind.js";
-import IDragTarget from "../interfaces/IDragTarget.js";
-import TProjectStatus from "../types/TProjectStatuses.js";
-import ProjectStatusesENUM from "../enums/ProjectStatuses.js";
+import App from "../app";
+import Component from "./BaseComponent";
+import Project from "./Project";
+import ProjectItem from "./ProjectItem";
+import AutoBind from "../decorators/AutoBind";
+import IDragTarget from "../interfaces/IDragTarget";
+import TProjectStatus from "../types/TProjectStatuses";
+import ProjectStatusesENUM from "../enums/ProjectStatuses";
 
 export default class ProjectList
   extends Component<HTMLDivElement>
