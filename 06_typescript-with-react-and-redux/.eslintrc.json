@@ -1,0 +1,15 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["react-app", "prettier"],
+  "plugins": ["prettier", "react-hooks"],
+  "rules": {
+    "react-hooks/rules-of-hooks": "warn",
+    "prettier/prettier": "warn",
+    "no-unused-vars": "warn",
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "no-var": "warn",
+    "array-callback-return": "warn",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-nested-ternary": "warn"
+  }
+}
